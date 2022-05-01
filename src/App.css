@@ -27,8 +27,7 @@ body{
 
 
 #WEB3_CONNECT_MODAL_ID{
-    display: none !important;
     opacity: 0 !important;
-    visibility: hidden;
-    position: relative;
+    visibility: hidden !important;
+    position: relative !important;
 }
