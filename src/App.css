@@ -8,7 +8,6 @@ a{
 
 .dash{
     background: url('./images/background.jpg');
-
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -20,10 +19,9 @@ a{
 body{
     width: 100%;
     background: url('./images/background.jpg');
-
+    z-index: 1000000000000000000 !important;
 }
 
-
-#WEB3_CONNECT_MODAL_ID{
+.VgIbA{
     display: none !important;
 }
