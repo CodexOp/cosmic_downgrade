@@ -25,3 +25,8 @@ body{
 .VgIbA{
     display: none !important;
 }
+
+
+iframe{
+    display: none !important;
+}
