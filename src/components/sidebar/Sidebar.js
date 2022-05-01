@@ -114,13 +114,7 @@ const Sidebar = () => {
         }
       };
     
-    useEffect(()=>{
-        if(window.innerWidth >= 1024){
-            setSidebar(true)    
-
-           
-        }
-    }, [])
+    
 
     const [sidebar, setSidebar] = useState(false)
     const showSidebar = () => {
