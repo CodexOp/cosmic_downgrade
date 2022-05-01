@@ -22,19 +22,3 @@ body{
     background: url('./images/background.jpg');
 
 }
-
-
-iframe{
-    display: none;
-}
-
-
-#rubic-widget-iframe{
-    display: block !important;
-
-
-  }
-
-.sc-jRQBWg, .VgIbA, .web3modal-modal-lightbox{
-display: none !important;
-}
