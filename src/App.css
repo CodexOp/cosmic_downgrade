@@ -5,6 +5,10 @@ a{
     text-decoration: none !important; 
 }
 
+#root{
+    z-index: 10000000000000000 !important;
+
+}
 
 .dash{
     background: url('./images/background.jpg');
@@ -19,14 +23,12 @@ a{
 body{
     width: 100%;
     background: url('./images/background.jpg');
-    z-index: 10000000000000000 !important;
-}
-
-.VgIbA{
-    display: none !important;
 }
 
 
-iframe{
+#WEB3_CONNECT_MODAL_ID{
     display: none !important;
+    opacity: 0 !important;
+    visibility: hidden;
+    position: relative;
 }
