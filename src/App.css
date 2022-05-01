@@ -8,12 +8,21 @@ a{
 
 .dash{
     background: url('./images/background.jpg');
-    background-size: cover;
-    min-height: 90vh;
-}
+ background-attachment: fixed;
+ background-position: center;
+ background-repeat: no-repeat;
+ height: auto;
+ background-size: cover;
+ }
 
 body{
     width: 100%;
-    position: relative;
+       background: url('./images/background.jpg');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: auto;
+    background-size: cover;
+    
     overflow-x: hidden;
 }
