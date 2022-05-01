@@ -2,7 +2,6 @@
 #root, body{
     margin:0;
     padding: 0;
-    background-color: #000;
 }
 
 
@@ -26,23 +25,24 @@ a{
 }
 
 
-.connect_button:hover + .logout{
-  transition-delay: 0s;
-  visibility: visible;}
+// .connect_button:hover  .logout{
+//   transition-delay: 0s;
+//   visibility: visible;
+// }
 
-.connect_button + .logout { 
-  visibility: hidden;
-  transition: all 0.3s ease 2s; /*delay 1s*/
-  cursor: pointer;
-  position: absolute;
-  top:40;
-  right:15%;
-  color: #fff;  
-}
+// .connect_button + .logout { 
+//   visibility: hidden;
+//   transition: all 0.3s ease 2s; /*delay 1s*/
+//   cursor: pointer;
+//   position: absolute;
+//   top:40;
+//   right:15%;
+//   color: #fff;  
+// }
  
-.login{
-  position: relative;
-}
+// .login{
+//   position: relative;
+// }
 
 
 
