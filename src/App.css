@@ -8,23 +8,32 @@ a{
 
 .dash{
     background: url('./images/background.jpg');
- background-attachment: fixed;
- background-position: center;
- background-repeat: no-repeat;
- background-size: cover;
+
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    overflow-x: hidden;
  }
 
 body{
     width: 100%;
     background: url('./images/background.jpg');
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: auto;
-    background-size: cover;
-    overflow-x: hidden;
+
 }
 
+
+iframe{
+    display: none;
+}
+
+
+#rubic-widget-iframe{
+    display: block !important;
+
+
+  }
 
 .sc-jRQBWg, .VgIbA, .web3modal-modal-lightbox{
 display: none !important;
