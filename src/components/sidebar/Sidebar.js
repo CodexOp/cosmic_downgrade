@@ -74,7 +74,6 @@ const Sidebar = () => {
             }
           },
         });
-        connectWallet();
     
       }, []);
     
@@ -132,16 +131,16 @@ const Sidebar = () => {
         </div>
 
         <div>
-        {/* <div className='login'> */}
+        <div className='login'>
 
             <Link to="/swap"> <button className='swap_button'>Swap</button></Link>
-            <button onClick={connectWallet} className='connect_button' >{(connectedWallet)? <>{walletAddress.slice(0, 6) + "..."}</>
+            <button  className='connect_button' >{(connectedWallet)? <>{walletAddress.slice(0, 6) + "..."}</>
       :
       <>Connect</>}</button>
-      {/* <div className='logout'>
+      <div className='logout'>
   Logout
 </div>
-</div> */}
+</div>
 
 
         </div>
