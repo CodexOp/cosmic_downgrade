@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { SliderData, linkdata } from './SidebarData';
 import './sidebar.scss';
 import * as Faicons from 'react-icons/fa'
-import * as Ai from 'react-icons/ai'
 import { ethers, providers } from "ethers";
 import logo from '../../images/logo.png';
 // import WalletConnectProvider from "@walletconnect/web3-provider";
@@ -133,7 +132,7 @@ const Sidebar = () => {
     <div className='navbar'>
         <div to="" className='menu-bars'>
         <div className='logo_Container'>
-        <Falcons.FaBars onClick={showSidebar} color="#fff" className='bars'/>
+        <Faicons.FaBars onClick={showSidebar} color="#fff" className='bars'/>
         <img src={logo} alt='logo' className='logo'/>
         </div>
         </div>
