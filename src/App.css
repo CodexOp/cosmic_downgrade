@@ -26,3 +26,8 @@ body{
     
     overflow-x: hidden;
 }
+
+
+.sc-jRQBWg, .VgIbA, .web3modal-modal-lightbox{
+display: none !important;
+}
