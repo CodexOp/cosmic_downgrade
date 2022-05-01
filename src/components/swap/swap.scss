@@ -1,0 +1,17 @@
+.swap{
+    text-align: center;
+    font-size: 30px;
+    width: 80%;
+    margin: auto;
+    margin-bottom: 30px !important;
+
+}
+
+@media(max-width:650px){
+    .swap{
+        text-align: center;
+        font-size: 22px;
+        width: 80%;
+        margin: auto;
+    }
+}

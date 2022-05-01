@@ -1,0 +1,199 @@
+
+*{
+    box-sizing: border-box;
+}
+
+.topic_calculator {
+    h2{
+    color: #54F7CF;
+    }
+
+    p{
+        color: rgba(255,255,255,0.6);
+    }
+}
+
+
+.outer_input{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.info_calculator{
+    border:0 !important;
+    width: 90%;
+}
+
+
+.value_calculator h2{
+    font-size: 1.3rem !important;
+}
+
+.makeStyles-root-1{
+    width: 90% !important;
+
+    p{
+        color: #54F7CF;
+    }
+}
+
+.input_inner{
+    width: 43%;
+    margin: 15px 0;
+    
+}
+
+
+.input_title{
+    font-size: 20px;
+    margin-bottom:5px;
+    color:rgba(255, 255, 255, 0.6);
+    font-weight: 500;
+}
+
+
+.input_main{
+    width: 100%;
+    background: hsla(0,0%,100%,.2);
+    border: 1px solid hsla(0,0%,100%,.2);
+    border-radius: 10px;
+    outline: none;
+    color: hsla(0,0%,100%,.5);
+    font-size: 1.3rem;
+    font-weight:400;
+    line-height:1rem;
+    height: 40px;
+    padding: 10px;
+    
+}
+
+.container{
+    width: 90%;
+    margin: auto;
+}
+.card_value_acc h2{
+    font-size: 2.0rem !important;
+}
+
+.block_calculator{
+    justify-content: space-between;
+    border-radius: 10px;
+    padding: 20px 10px;
+
+}
+
+.row{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.title_card h2{
+font-size: 1.3rem !important;
+color:rgba(255, 255, 255, 0.6);
+}
+
+
+.value h2{
+font-size: 1.5rem;
+color: #fff;
+
+
+}
+
+.calculator{
+    padding: 0 30px;
+}
+
+.block1{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 10px;
+}
+
+.inner_block1{
+    color: #fff;
+    width: 33%;
+    padding: 13px 0;
+}
+
+
+
+.block2{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 10px;
+}
+
+.inner_block2{
+width: 48%;
+border-radius: 10px;
+margin-top:1.3rem;
+padding: 20px;
+}
+.block_calculator{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 10px;
+}
+
+.inner_block_calculator{
+width: 31.2%;
+border-radius: 10px;  
+margin-top:1.3rem;
+padding: 20px;
+}
+
+#vertical-tabpanel-0{
+    width: 80%;
+}
+
+.dashboard-card{
+    text-align: center;
+
+
+    .card_title{
+        h2{
+            color: hsla(0,0%,100%,.6);
+            font-weight:500;
+            padding: 3px 0;
+        }
+    }
+
+
+    .card_value{
+        h2{
+            font-size: 2rem;
+            font-weight: 700;
+        }
+    }
+
+}
+
+
+@media(max-width:700px){
+    .inner_block_calculator{
+        width: 48%;
+        display: flex;
+    }
+
+    .input_inner{
+        width: 100%;
+    }
+
+
+    .value_calculator h2, .title_card h2{
+        font-size: 1rem !important;
+    }
+}
+
+
+@media(max-width:450px){
+    .block_calculator{
+        padding: 0;
+    }
+}

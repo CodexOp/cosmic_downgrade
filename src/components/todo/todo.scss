@@ -1,0 +1,35 @@
+.todo_list{
+    width: 80% !important;
+    margin: auto;
+    margin-top: 20px !important;
+}
+
+
+.todo_icon{
+        color: #fff !important;
+        font-size: 25px;
+}
+
+
+.todo_block{
+    padding: 5px 0;
+}
+
+a{
+    text-decoration: none;
+}
+
+.todo_card{
+    justify-content: space-between !important;
+    padding: 0 20px !important;
+    flex-direction: row !important;
+    gap:0px
+
+}
+
+
+@media (max-width:650px) {
+    .todo_title{
+        width: 15% !important;
+    }
+}

@@ -1,0 +1,98 @@
+@import url("https://fonts.googleapis.com/css?family=Hind:300,400&display=swap");
+
+:root {
+  --color-text: hsl(248, 10%, 100%);
+  --color-text-muted: hsl(0, 0%, 83%);
+  --color-purple: #000;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
+
+.accordion {
+  width: 80%;
+  border-radius: 1rem;
+  margin: auto;
+
+/*   box-shadow: 0 0 5rem lightgrey; */
+}
+
+.accordion__heading {
+  margin-bottom: 1rem;
+  padding: 0 1.4rem;
+}
+
+
+.accordion__btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+
+  padding: 1.2rem 1.4rem;
+  border: none;
+  border-radius: 10px;
+  outline: none;
+  color: var(--color-text);
+  font-size: 1.2rem;
+  border-bottom: 2px solid var(--color-text) !important;
+  background-color: rgba($color: #71C7EC, $alpha: 0.25);
+  text-align: left;
+  cursor: pointer;
+  transition: 0.1s;
+}
+.accordion__btn:hover {
+  color: var(--color-purple);
+  background: rgba($color: #fff, $alpha: 0.9)
+}
+
+.accordion__caption{
+    gap:10px;
+    display: flex;
+    align-items: center;
+}
+
+
+.accordion__item--active .accordion__btn {
+  color: var(--color-purple);
+  border-bottom: 2px solid var(--color-purple) !important;
+  
+}
+
+.fa-lightbulb {
+  padding-right: 1rem;
+}
+.accordion__icon {
+  border-radius: 50%;
+  transform: rotate(0deg);
+  transition: 0.3s ease-in-out;
+  opacity: 0.9;
+}
+.accordion__item--active .accordion__icon {
+  transform: rotate(135deg);
+}
+
+.accordion__content {
+  font-weight: 300;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  color: var(--color-text-muted);
+  transform: translateX(16px);
+  transition: max-height 0.5s ease, opacity 0.5s, transform 0.5s;
+}
+.accordion__content p {
+  padding: 1rem 1.8rem;
+  font-size: 18px;
+}
+
+.accordion__item--active .accordion__content {
+  opacity: 1;
+  transform: translateX(0px);
+  max-height: 100vh;
+}

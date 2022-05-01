@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script type="text/javascript" src="https://widgets.rubic.exchange/iframe/bundle.min.js"></script>
+    <script defer type="text/javascript">
+      // describe widget configuration and saving to a global variable for future use
+      var configuration = {
+          from: 'ETH',
+          to: 'RBC',
+          fromChain: 'ETH',
+          toChain: 'ETH',
+          amount: 1,
+          iframe: 'flex',
+          hideSelectionFrom: false,
+          hideSelectionTo: true,
+          theme: 'dark',
+          background: '#28372e',
+          injectTokens: {
+              eth: ['0xd123575d94a7ad9bff3ad037ae9d4d52f41a7518'],
+              bsc: ['0x8aed24bf6e0247be51c57d68ad32a176bf86f4d9']
+          },
+          slippagePercent: {
+              instantTrades: 2,
+              crossChain: 5
+          },
+          promoCode: 'srTqRKUz',
+          fee: 0.075,
+          feeTarget: '0xecA0A3eFCf009519052Dc92306fE821b9c7A32A2'
+      }
+  
+      // prevent accidental changes to the object, for example, when re-creating a widget for another theme
+      Object.freeze(configuration);
+  
+      // create widget
+      rubicWidget.init(configuration);
+  </script>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo.png" />
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>Dashboard</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+  </body>
+
+</html>
