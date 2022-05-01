@@ -25,9 +25,3 @@ body{
     background: url('./images/background.jpg');
 }
 
-
-#WEB3_CONNECT_MODAL_ID{
-    opacity: 0 !important;
-    visibility: hidden !important;
-    position: relative !important;
-}
