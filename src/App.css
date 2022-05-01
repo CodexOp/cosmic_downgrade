@@ -19,7 +19,7 @@ a{
 body{
     width: 100%;
     background: url('./images/background.jpg');
-    z-index: 1000000000000000000 !important;
+    z-index: 10000000000000000 !important;
 }
 
 .VgIbA{
