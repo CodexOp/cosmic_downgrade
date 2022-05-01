@@ -26,7 +26,7 @@ const Todo = () => {
 
   function ListItem (props) {
     return <div>
-      <a href={props.url} target="_blank">
+      <a href={props.url} target="_blank" rel="noreferrer">
     <div className="block1 wallet_block contract_address todo_list">
 
         <div className="inner_block1  todo_block walletaddress_box todo_block">

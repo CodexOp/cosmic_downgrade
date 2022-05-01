@@ -1,5 +1,4 @@
 import React, {useRef, useEffect, useState} from 'react';
-import * as Falcons from 'react-icons/fa';
 import * as Aicons from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 import { SliderData, linkdata } from './SidebarData';
