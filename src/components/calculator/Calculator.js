@@ -4,6 +4,9 @@ import './calculator.scss'
 import CustomizedSlider from './Slider';
 import routerAbi from '../../abi/router.json';
 import tokenAbi from '../../abi/token.json';
+import {provider, setProvider, signer, setSigner} from '../../App';
+import values from "../../values.json"
+
 
 const Calculator = () => {
 
@@ -17,10 +20,16 @@ const Calculator = () => {
   
   let finalTokens = 0;
 
+  let _provider = React.useContext (provider);
+  let _setProvider = React.useContext (setProvider);
+  let _signer = React.useContext (signer);
+  let _setSigner = React.useContext (setSigner);
+
+
   React.useEffect(() => {
     try{
       getPrice()
-      getBalance()
+      _getBalance()
     } catch (error){
       console.log(error);
     }
@@ -34,51 +43,55 @@ const Calculator = () => {
     else if (name === "futurePrice") setFuturePrice(value);
   }
 
-  finalTokens = ((1.0002358)** (4*24*days))* tokenAmount;
+  finalTokens = ((1.0001058)** (6*24*days))* tokenAmount;
 
   async function getPrice(){
-    let rpcUrl = "https://bsc-dataseed1.defibit.io/";
-    let provider_ = new ethers.providers.JsonRpcProvider(rpcUrl);
-    let router = new ethers.Contract(
-      '0x10ED43C718714eb63d5aA57B78B54704E256024E',
-      routerAbi,
-      provider_
-    );
-    const tokenIn = '0x4AeC6456B758f7eE4d12383cadEfD65de5312Df1';
-    const tokenOut = "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c";
-    const amountIn = "100000";
-    let amounts = await router.getAmountsOut(amountIn, [tokenIn, tokenOut]);
-    let busd = '0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56';
-    let amounts2 = await router.getAmountsOut(amounts[1], [tokenOut, busd]);
-    console.log(`
-        Buying new token
-        =================
-        tokenIn: ${ethers.utils.formatEther(amountIn.toString())} ${tokenIn} (Amber)
-        tokenOut: ${ethers.utils.formatEther(amounts2[1].toString())} ${busd} (BUSD)
-      `);
-    setPrice(ethers.utils.formatEther(amounts2[1].toString()));
+    try{
+      let rpcUrl = values.rpcUrl;
+      let provider_ = new ethers.providers.JsonRpcProvider(rpcUrl);
+      let router = new ethers.Contract(
+        values.router,
+        routerAbi,
+        provider_
+      );
+      const tokenIn = values.token;
+      const tokenOut = values.wbnb;
+      
+      const amountIn = ethers.utils.parseUnits("1", 5);
+      let amounts = await router.getAmountsOut(amountIn, [tokenIn, tokenOut]);
+      let busd = values.busd;
+      let amounts2 = await router.getAmountsOut(amounts[1], [tokenOut, busd]);
+      console.log(`
+          tokenIn: ${ethers.utils.formatEther(amountIn.toString())} ${tokenIn} (cosmik)
+          tokenOut: ${ethers.utils.formatEther(amounts2[1].toString())} ${busd} (BUSD)
+        `);
+      setPrice(parseFloat(ethers.utils.formatEther(amounts2[1].toString())).toFixed(8));
+    } catch (err) {
+      console.log (err);
+    }
   }
 
-  async function getBalance (){
+  async function _getBalance (address){
     try {
-      let rpcUrl = "https://bsc-dataseed1.defibit.io/";
+      let rpcUrl = values.rpcUrl;
       let provider_ = new ethers.providers.JsonRpcProvider(rpcUrl);
       let token = new ethers.Contract(
-        '0x4AeC6456B758f7eE4d12383cadEfD65de5312Df1',
+        address,
         tokenAbi,
         provider_
       );
       let provider = new ethers.providers.Web3Provider(window.ethereum);
-      await provider.send("eth_requestAccounts", []).catch((error) => {
-          console.log(error);
-      })
       let signer = provider.getSigner();
       const walletAddress = await signer.getAddress();
       let balance = await token.balanceOf (walletAddress);
-      setBalance(balance.div('100000').toString());
+      let decimals = await token.decimals();
+      decimals = parseInt(decimals.toString());
+      balance = ethers.utils.formatUnits(balance, decimals);
       console.log ("balance", balance.toString());
+      return parseFloat(balance.toString()).toFixed(2);
     } catch (err){
-      console.log (err);
+      console.log (err, address);
+      return 0;
     }
   }
 

@@ -6,7 +6,7 @@ import './sidebar.scss';
 import * as Faicons from 'react-icons/fa'
 import { ethers, providers } from "ethers";
 import logo from '../../images/logo.png';
-// import WalletConnectProvider from "@walletconnect/web3-provider";
+import WalletConnectProvider from "@walletconnect/web3-provider";
 import Web3Modal from "web3modal";
 import values from "../../values.json"
 import {provider, setProvider, signer, setSigner} from '../../App';
@@ -35,12 +35,12 @@ const Sidebar = () => {
           network: "rinkeby",
           providerOptions: {
             walletconnect: {
-              // package: WalletConnectProvider, // required
-              // options: {
-              //   rpc: {
-              //     56: values.rpcUrl
-              //   } // required
-              // }
+              package: WalletConnectProvider, // required
+              options: {
+                rpc: {
+                  56: values.rpcUrl
+                } // required
+              }
               // coinbasewallet: {
               //   package: "CoinbaseWalletSDK", // Required
               //   options: {
@@ -76,6 +76,10 @@ const Sidebar = () => {
         });
     
       }, []);
+
+      useEffect(()=>{
+        
+      }, [_provider, _signer]);
     
 
 
@@ -106,6 +110,10 @@ const Sidebar = () => {
             setWalletAddress(temp.toString());
           }
           setConnectedWallet(true);
+          provider.on("accountsChanged", (accounts) => {
+            console.log(accounts);
+            connectWallet();
+          });
         } catch (error) {
           console.log (error);
           const provider = new providers.JsonRpcProvider(values.rpcUrl);
@@ -134,7 +142,7 @@ const Sidebar = () => {
         <div className='login'>
 
             <Link to="/swap"> <button className='swap_button'>Swap</button></Link>
-            <button  className='connect_button' >{(connectedWallet)? <>{walletAddress.slice(0, 6) + "..."}</>
+            <button  className='connect_button' onClick= {connectWallet} >{(connectedWallet)? <>{walletAddress.slice(0, 6) + "..."}</>
       :
       <>Connect</>}</button>
       <div className='logout'>

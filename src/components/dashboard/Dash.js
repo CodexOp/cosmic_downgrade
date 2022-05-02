@@ -20,7 +20,8 @@ const Dash = () => {
   let [totalSupply, setTotalSupply] = React.useState(0);
   let [taxBracket, setTaxBracket] = React.useState(0);
   let [rebaseTime, setRebaseTime] = React.useState(0);
-  let initialTotalSupply = 325000;
+  let [apy, setAPY] = React.useState(0);
+  let [currencyExchange, setCurrencyExchange] = React.useState(0);
 
   let [connectedWallet, setConnectedWallet] = React.useState(false);
   let [walletAddress, setWalletAddress] = React.useState("");
@@ -45,7 +46,7 @@ const Dash = () => {
       background: '#28372e',
       injectTokens: {
           eth: ['0xd123575d94a7ad9bff3ad037ae9d4d52f41a7518'],
-          bsc: ['0x8aed24bf6e0247be51c57d68ad32a176bf86f4d9']
+          bsc: ['0x7509DB061C45e8EcEb01739D104f78F85eF22Dbf']
       },
       slippagePercent: {
           instantTrades: 2,
@@ -53,7 +54,7 @@ const Dash = () => {
       },
       promoCode: 'srTqRKUz',
       fee: 0.075,
-      feeTarget: '0xecA0A3eFCf009519052Dc92306fE821b9c7A32A2'
+      feeTarget: '0xd17bc6123a197642d3944d0da106342cefbb7009'
     }
 
     // prevent accidental changes to the object, for example, when re-creating a widget for another theme
@@ -72,6 +73,7 @@ const Dash = () => {
     async function fetchData(){
       getPrice();
       getTotalSupply();
+      getCurrentTaxBracket();
       let _balance = await _getBalance(values.token);
       let _burn = await _getBalance(values.dead);
       setBalance(_balance);
@@ -103,6 +105,7 @@ const Dash = () => {
           tokenOut: ${ethers.utils.formatEther(amounts2[1].toString())} ${busd} (BUSD)
         `);
       setPrice(parseFloat(ethers.utils.formatEther(amounts2[1].toString())).toFixed(8));
+      setCurrencyExchange(parseFloat(ethers.utils.formatEther(amounts2[1].toString())).toFixed(8));
     } catch (err) {
       console.log (err);
     }
@@ -147,6 +150,14 @@ const Dash = () => {
       decimals = parseInt(decimals.toString());
       supply = ethers.utils.formatUnits(supply, decimals);
       setTotalSupply(parseInt(supply));
+      let time = await token._initRebaseStartTime();
+      let timestamp = new Date().getTime();
+      timestamp = (timestamp/1000).toFixed(0);
+      console.log("Time", time.toString(), timestamp);
+      time = parseInt((timestamp- parseInt(time.toString()))/600);
+      let _power = parseInt((6*24*365)/time);
+      let _apy = Math.pow(((supply - 325000)/325000), _power) * 100;
+      setAPY(_apy);
     } catch (err) {
       console.log(err);
     }
@@ -273,7 +284,7 @@ const Dash = () => {
             <h2>Current APY</h2>
             </div>
             <div className="card_value">
-             <h2>${0}</h2>
+             <h2>{apy.toLocaleString()}%</h2>
             </div>
           </div>
         </div>
@@ -308,11 +319,12 @@ const Dash = () => {
             <h2>Currency Exchange</h2>
             </div>
             <div className="card_value">
+            <h2>{parseFloat(currencyExchange).toFixed(3).toLocaleString()}</h2>
             <select name="exchange" id="exchange">
-            <option value="USDT">USDT</option>
-            <option value="YEN">YEN</option>
-            <option value="BNB">BNB</option>
-            <option value="BTC">BTC</option>
+            <option value="USDT" onClick={()=>{setCurrencyExchange(price)}}>USDT</option>
+            <option value="YEN" onClick={()=>{setCurrencyExchange(price* 130.36)}}>YEN</option>
+            <option value="BNB" onClick={()=>{setCurrencyExchange(price* 6.61)}}>YUAN</option>
+            <option value="BTC" onClick={()=>{setCurrencyExchange(price* 76.47)}}>INR</option>
             </select>
             </div>
           </div>
