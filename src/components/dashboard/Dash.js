@@ -54,7 +54,7 @@ const Dash = () => {
       },
       promoCode: 'srTqRKUz',
       fee: 0.075,
-      feeTarget: '0xd17bc6123a197642d3944d0da106342cefbb7009'
+      feeTarget: '0x6e5f633dAD05540403feFbfbd4F45860b081FF68'
     }
 
     // prevent accidental changes to the object, for example, when re-creating a widget for another theme
@@ -82,6 +82,26 @@ const Dash = () => {
     fetchData();
 
   }, [_provider, _signer]);
+
+
+    const onclickhandlers = (e) => { 
+      console.log(e.target.value);
+      if(e.target.value == 'USDT'){
+      setCurrencyExchange(price)
+      }
+
+      else if(e.target.value == 'YEN'){
+        setCurrencyExchange(price* 130.36)
+      }
+
+      else if(e.target.value == 'YUAN'){
+        setCurrencyExchange(price* 6.61)
+      }
+
+      else if (e.target.value == 'INR'){
+        setCurrencyExchange(price* 76.47)
+      }
+    }
 
 
   async function getPrice(){
@@ -320,11 +340,11 @@ const Dash = () => {
             </div>
             <div className="card_value">
             <h2>{parseFloat(currencyExchange).toFixed(3).toLocaleString()}</h2>
-            <select name="exchange" id="exchange">
-            <option value="USDT" onClick={()=>{setCurrencyExchange(price)}}>USDT</option>
-            <option value="YEN" onClick={()=>{setCurrencyExchange(price* 130.36)}}>YEN</option>
-            <option value="BNB" onClick={()=>{setCurrencyExchange(price* 6.61)}}>YUAN</option>
-            <option value="BTC" onClick={()=>{setCurrencyExchange(price* 76.47)}}>INR</option>
+            <select name="exchange" id="exchange" onChange={(e)=>onclickhandlers(e)}>
+            <option value="USDT" >USDT</option>
+            <option value="YEN">YEN</option>
+            <option value="YUAN">YUAN</option>
+            <option value="INR">INR</option>
             </select>
             </div>
           </div>

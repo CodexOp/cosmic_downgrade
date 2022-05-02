@@ -195,9 +195,9 @@ const Sidebar = () => {
             
             </div>
             <div className='socials_select'>
-            <a href="https://t.me/MMarketingDAO"><Faicons.FaTelegram className="social_icons"/></a>
-            <a href="https://twitter.com/MetaMktingDAO"> <Faicons.FaTwitter className="social_icons"/></a>
-            <a href="https://discord.com/invite/Y9sdpcCbnv">  <Faicons.FaDiscord className="social_icons"/> </a>
+            <a href="https://cosmik-finance.gitbook.io/cosmik-finance-documentation-v2.1/"><Faicons.FaGithub className="social_icons"/></a>
+            <a href="https://twitter.com/CosmikFinance"> <Faicons.FaTwitter className="social_icons"/></a>
+            <a href="https://discord.com/invite/CosmikFinance">  <Faicons.FaDiscord className="social_icons"/> </a>
             </div>,
 
         </ul>
