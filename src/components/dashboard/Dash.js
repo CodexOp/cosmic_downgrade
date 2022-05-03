@@ -52,7 +52,7 @@ const Dash = () => {
           instantTrades: 2,
           crossChain: 5
       },
-      promoCode: 'srTqRKUz',
+      promoCode: 'l169eDvQ',
       fee: 0.075,
       feeTarget: '0xd17bc6123a197642d3944d0da106342cefbb7009'
     }
@@ -120,9 +120,7 @@ const Dash = () => {
         tokenAbi,
         provider_
       );
-      let provider = new ethers.providers.Web3Provider(window.ethereum);
-      let signer = provider.getSigner();
-      const walletAddress = await signer.getAddress();
+      const walletAddress = await _signer.getAddress();
       let balance = await token.balanceOf (walletAddress);
       let decimals = await token.decimals();
       decimals = parseInt(decimals.toString());
@@ -156,7 +154,8 @@ const Dash = () => {
       console.log("Time", time.toString(), timestamp);
       time = parseInt((timestamp- parseInt(time.toString()))/600);
       let _power = parseInt((6*24*365)/time);
-      let _apy = Math.pow(((supply - 325000)/325000), _power) * 100;
+      let _base = ((supply)/325000);
+      let _apy = Math.pow(_base, _power) * 100;
       setAPY(_apy);
     } catch (err) {
       console.log(err);
@@ -173,7 +172,8 @@ const Dash = () => {
         provider_
       );
 
-      let _taxBracket = await token.getCurrentTaxBracket();
+      const walletAddress = await _signer.getAddress();
+      let _taxBracket = await token.getCurrentTaxBracket(walletAddress);
       setTaxBracket(parseInt(_taxBracket.toString())/10);
 
     } catch (err) {
