@@ -11,6 +11,7 @@ import ring from '../../images/ring.png'
 import {provider, setProvider, signer, setSigner} from '../../App';
 import values from "../../values.json"
 import {Link} from 'react-router-dom'
+import Moralis from 'moralis';
 
 
 const Dash = () => {
@@ -30,6 +31,10 @@ const Dash = () => {
   let _setProvider = React.useContext (setProvider);
   let _signer = React.useContext (signer);
   let _setSigner = React.useContext (setSigner);
+
+  const serverUrl = "https://vrz6hhup8ksk.usemoralis.com:2053/server";
+  const appId = "Mte66KaEW0G970ihrwtQm4K8yeUNkwMt23y7RsY7";
+  
 
 
   React.useEffect(() => {
@@ -63,6 +68,7 @@ const Dash = () => {
     // create widget
     window.rubicWidget.init(configuration);
     getRebaseTime();
+    getChartData();
 
 
   }, []);
@@ -75,9 +81,10 @@ const Dash = () => {
       getTotalSupply();
       getCurrentTaxBracket();
       let _balance = await _getBalance(values.token);
-      let _burn = await _getBalance(values.dead);
+      let _burn = await _getBalance(values.token, values.dead);
       setBalance(_balance);
       setBurn(_burn);
+      getChartData();
     }
     fetchData();
 
@@ -102,6 +109,41 @@ const Dash = () => {
         setCurrencyExchange(price* 76.47)
       }
     }
+  
+  async function getChartData () {
+    try{
+      // let dates1 = Array(Number(days).fill().map((e.i) =>
+      // moment().substract(i, "d").format("YYYY-MM-DD")
+      // ).reverse()
+      let dates1 = ["2022-05-06", "2022-05-06", "2022-05-05"]
+      console.log(dates1)
+      // Moralis.initialize(appId)
+      // Moralis.serverURL = serverUrl;
+      Moralis.start({ serverUrl, appId });
+
+      let temp = await Moralis.Web3API.token.getTokenPrice({address: values.token, chain: "bsc"})
+      console.log (temp)
+
+      // let blocks1 = await Promise.all(dates1.map(async(e,i) =>{
+      //   console.log ( "E:", e);
+      //   const tem = Moralis.Web3API.native;
+      //   const temp = await Moralis.Web3API.native.getDateToBlock({ date:e})
+      //   console.log("temp", temp)
+      // }
+      // ))
+      // console.log(blocks1)
+
+
+      // let prices1 = await Promise.all(blocks1.map(async(e,i) =>
+      //   await Moralis.Web3API.token.getTokenPrice({address: values.token, to_block:e.block})
+      // ))
+      // console.log(prices1)
+
+      // console.log ("Prices are as follows:", prices1);
+    }catch (err){
+      console.log ("Chart Error", err)
+    }
+  }
 
 
   async function getPrice(){
@@ -131,24 +173,26 @@ const Dash = () => {
     }
   }
 
-  async function _getBalance (address){
+  async function _getBalance (tokenAddress, accountAddress){
     try {
       let rpcUrl = values.rpcUrl;
       let provider_ = new ethers.providers.JsonRpcProvider(rpcUrl);
       let token = new ethers.Contract(
-        address,
+        tokenAddress,
         tokenAbi,
         provider_
       );
-      const walletAddress = await _signer.getAddress();
-      let balance = await token.balanceOf (walletAddress);
+      if (!accountAddress){
+        accountAddress = await _signer.getAddress();
+      }
+      let balance = await token.balanceOf (accountAddress);
       let decimals = await token.decimals();
       decimals = parseInt(decimals.toString());
       balance = ethers.utils.formatUnits(balance, decimals);
       console.log ("balance", balance.toString());
       return parseFloat(balance.toString()).toFixed(2);
     } catch (err){
-      console.log (err, address);
+      console.log (err, tokenAddress);
       return 0;
     }
   }
@@ -173,7 +217,7 @@ const Dash = () => {
       timestamp = (timestamp/1000).toFixed(0);
       console.log("Time", time.toString(), timestamp);
       time = parseInt((timestamp- parseInt(time.toString()))/600);
-      let _power = parseInt((6*24*365)/time);
+      let _power = parseInt((6*24*365)/time) + 2;
       let _base = ((supply)/325000);
       let _apy = Math.pow(_base, _power) * 100;
       setAPY(_apy);
@@ -355,7 +399,7 @@ const Dash = () => {
             <h2>Total Token Burn</h2>
             </div>
             <div className="card_value">
-             <h2>${burn.toLocaleString()}</h2>
+             <h2>{parseFloat(burn).toLocaleString()}</h2>
             </div>
           </div>
         </div>
@@ -365,7 +409,7 @@ const Dash = () => {
             <h2>Total Burn</h2>
             </div>
             <div className="card_value">
-             <h2>${parseFloat(burn * price).toFixed(2).toLocaleString()}</h2>
+             <h2>${parseFloat(parseFloat(burn * price).toFixed(2)).toLocaleString()}</h2>
             </div>
           </div>
         </div>
