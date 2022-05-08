@@ -39,7 +39,7 @@ export const linkdata = [
     },
     {
         title:'Buy Now',
-        link:'',
+        link:'https://app.bogged.finance/bsc/swap?tokenIn=BNB&tokenOut=0x7509DB061C45e8EcEb01739D104f78F85eF22Dbf',
         icon: <MdSell/>
     },
   

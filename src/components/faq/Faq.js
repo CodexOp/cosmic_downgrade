@@ -36,58 +36,58 @@ const Faq = () => {
   <div class="accordion__item">
     <button class="accordion__btn">
 
-      <span class="accordion__caption"><Fa.FaLightbulb/>How often are rewards paid out?</span>
+      <span class="accordion__caption"><Fa.FaLightbulb/>Which Chain ?</span>
       <span class="accordion__icon"><Fa.FaPlus/></span>
     </button>
 
     <div class="accordion__content">
-      <p>Rewards are set to pay out hourly or once they hit the minimum payout level, whichever comes first.</p>
+      <p>Binance Smart Chain (BSC)</p>
     </div>
   </div>
 
   <div class="accordion__item">
     <button class="accordion__btn">
 
-    <span class="accordion__caption"><Fa.FaLightbulb/>How do I claim my rewards?</span>
+    <span class="accordion__caption"><Fa.FaLightbulb/>Was the presale whitelist or public?</span>
       <span class="accordion__icon"><Fa.FaPlus/></span>
     </button>
 
     <div class="accordion__content">
-      <p>If you don't want to wait for the automatic payout, you can always click the "Claim Now" button on the dashboard. Otherwise, sit tight and let the rewards roll in.</p>
+      <p>Whitelisted and it was filled organically within 10 seconds. No bots and No gas war.</p>
     </div>
   </div>
 
   <div class="accordion__item">
     <button class="accordion__btn">
 
-    <span class="accordion__caption"><Fa.FaLightbulb/>Do I pay taxes if I transfer Earn from one wallet to another?</span>
+    <span class="accordion__caption"><Fa.FaLightbulb/>When launch?</span>
       <span class="accordion__icon"><Fa.FaPlus/></span>
     </button>
 
     <div class="accordion__content">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco</p>
+      <p>2 May. Confirmation news will be released soon.</p>
     </div>
   </div>
 
   <div class="accordion__item">
     <button class="accordion__btn">
-    <span class="accordion__caption"><Fa.FaLightbulb/>Lorem ipsum dolor sit amet, consectetur adipiscing elit,</span>
+    <span class="accordion__caption"><Fa.FaLightbulb/>When listed on CEX?</span>
       <span class="accordion__icon"><Fa.FaPlus/></span>
     </button>
 
     <div class="accordion__content">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irur</p>
+      <p>We will list on DEX first. CEX listing will be announced in Discord.</p>
     </div>
   </div>
 
   <div class="accordion__item">
     <button class="accordion__btn">
-    <span class="accordion__caption"><Fa.FaLightbulb/>How do I figure out what to learn?</span>
+    <span class="accordion__caption"><Fa.FaLightbulb/>Is there a Telegram community?</span>
       <span class="accordion__icon"><Fa.FaPlus/></span>
     </button>
 
     <div class="accordion__content">
-      <p>Personally, I’d say choose a path and stick to it! Learning too many things at once will slow you down. Here are a few ideas of things you can choose to focus on, and a little bit about each one.</p>
+      <p>No. All official news is communicated via Discord.</p>
     </div>
   </div>
 </div>

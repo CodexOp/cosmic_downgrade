@@ -141,7 +141,7 @@ const Sidebar = () => {
         <div>
         <div className='login'>
 
-            <Link to="/swap"> <button className='swap_button'>Swap</button></Link>
+             <a href="https://app.bogged.finance/bsc/swap?tokenIn=BNB&tokenOut=0x7509DB061C45e8EcEb01739D104f78F85eF22Dbf"> <button className='swap_button'>Swap</button></a>
             <button  className='connect_button' onClick= {connectWallet} >{(connectedWallet)? <>{walletAddress.slice(0, 6) + "..."}</>
       :
       <>Connect</>}</button>
