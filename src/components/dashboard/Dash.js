@@ -12,12 +12,14 @@ import {provider, setProvider, signer, setSigner} from '../../App';
 import values from "../../values.json"
 import {Link} from 'react-router-dom'
 import Moralis from 'moralis';
+import { CountdownCircleTimer } from 'react-countdown-circle-timer'
 
 
 const Dash = () => {
   let [price, setPrice] = React.useState(0);
   let [balance, setBalance] = React.useState(0);
   let [burn, setBurn] = React.useState(0);
+  let [duration_time, setDuration] = React.useState(0);
   let [totalSupply, setTotalSupply] = React.useState(0);
   let [taxBracket, setTaxBracket] = React.useState(0);
   let [rebaseTime, setRebaseTime] = React.useState(0);
@@ -262,10 +264,14 @@ const Dash = () => {
       time = (10*60) - time;
       if (time<0) time = 600- timestamp%600;
       setRebaseTime(time);
+
+      setDuration(time)
       
       let updateTime = setInterval(() => {
         setRebaseTime((value) => {
-          if (value <=0)return 600;
+          if (value <=0){
+            setDuration(600)
+            return 600};
           return value -1;
         });
       }, 1000);
@@ -273,7 +279,6 @@ const Dash = () => {
       console.log ("Rebase Error:", error);
     }
   }
-
   return (
     <div className='dash'>
 
@@ -283,22 +288,24 @@ const Dash = () => {
 
   
 <div className="block1 blockmid chartblock">
-        <div className="inner_block1 chart" >
-          <div className='dashboard-card'>
-            <div className='card_title'>
-            <img className='chart_image' src={chart} alt='chart'/>
-            </div>
-          </div>
-        </div>
+        
         <div className="inner_block1 rebase">
         <div className='dashboard-card rebase_heading'>
             <div className='card_title'>
-           <img src={ring} className='ring' alt='ring'/>
-           <div className='card_title'>
+            <CountdownCircleTimer
+    isPlaying
+    duration={duration_time}
+    initialRemainingTime={15}
+    size="200"
+    colors="#7F3EDC"
+  />        
+  <div className='ring'>
+  <div className='card_title'>
             <h2>Rebase Timer</h2>
             </div>
             <div className="card_value">
              <h2>{parseInt(rebaseTime/60)}:{rebaseTime%60}</h2>
+            </div>
             </div>
           </div>
           </div>

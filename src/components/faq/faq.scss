@@ -27,6 +27,10 @@
   padding: 0 1.4rem;
 }
 
+.faq_heading{
+  font-size: 36px;
+  text-align: center;
+}
 
 .accordion__btn {
   display: flex;
@@ -95,4 +99,15 @@
   opacity: 1;
   transform: translateX(0px);
   max-height: 100vh;
+}
+
+
+
+@media(max-width:600px){
+  .faq_heading{
+    font-size: 26px;
+    text-align: center;
+    padding: 0 10px;
+  }
+  
 }

@@ -27,7 +27,7 @@ const Faq = () => {
         },[])
   return (
     <div className='dash'>
-                <div className="swap">Frequently Asked Questions</div>
+                <div className="swap faq_heading">Frequently Asked Questions</div>
 
         <div className='faq'>
         <div class="accordion">
@@ -80,16 +80,8 @@ const Faq = () => {
     </div>
   </div>
 
-  <div class="accordion__item">
-    <button class="accordion__btn">
-    <span class="accordion__caption"><Fa.FaLightbulb/>Is there a Telegram community?</span>
-      <span class="accordion__icon"><Fa.FaPlus/></span>
-    </button>
-
-    <div class="accordion__content">
-      <p>No. All official news is communicated via Discord.</p>
-    </div>
-  </div>
+  
+ 
 </div>
         </div>
     </div>
