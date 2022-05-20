@@ -265,7 +265,7 @@ const Dash = () => {
       if (time<0) time = 600- timestamp%600;
       setRebaseTime(time);
 
-      setDuration(time)
+      setDuration(parseInt(time))
       
       let updateTime = setInterval(() => {
         setRebaseTime((value) => {
@@ -279,6 +279,8 @@ const Dash = () => {
       console.log ("Rebase Error:", error);
     }
   }
+
+
   return (
     <div className='dash'>
 
@@ -292,13 +294,13 @@ const Dash = () => {
         <div className="inner_block1 rebase">
         <div className='dashboard-card rebase_heading'>
             <div className='card_title'>
-            <CountdownCircleTimer
+           { duration_time > 0 && <CountdownCircleTimer
     isPlaying
-    duration={duration_time}
-    initialRemainingTime={15}
+    duration={600}
+    initialRemainingTime={duration_time}
     size="200"
     colors="#7F3EDC"
-  />        
+  />        }
   <div className='ring'>
   <div className='card_title'>
             <h2>Rebase Timer</h2>
